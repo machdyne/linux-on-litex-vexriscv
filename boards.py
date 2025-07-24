@@ -611,6 +611,103 @@ class Noir(Board):
             "framebuffer",
         })
 
+# Lakritz support -----------------------------------------------------------------------------------
+
+class Lakritz(Board):
+    soc_kwargs = {"l2_size" : 0, "uart_name": "stub"}
+    #soc_kwargs = {"l2_size" : 0}
+    def __init__(self):
+        from litex_boards.targets import machdyne_lakritz
+        Board.__init__(self, machdyne_lakritz.BaseSoC, soc_capabilities={
+            # Communication
+            #"serial",
+            "usb_host",
+            # Storage
+            #"spiflash",
+            "spisdcard",
+            #"sdcard",
+            # Video,
+            "framebuffer",
+        })
+
+# Kopflos support -----------------------------------------------------------------------------------
+
+class Kopflos(Board):
+    soc_kwargs = {"l2_size" : 0}
+    def __init__(self):
+        from litex_boards.targets import machdyne_kopflos
+        Board.__init__(self, machdyne_kopflos.BaseSoC, soc_capabilities={
+            # Communication
+            #"serial",
+            "usb_host",
+            "ethernet",
+            # Storage
+            #"spiflash",
+            #"sdcard",
+            "spisdcard",
+        })
+
+# Sergei ML2 support -----------------------------------------------------------------------------------
+
+class Sergei_ML2(Board):
+    soc_kwargs = {"l2_size" : 8192}
+    def __init__(self):
+        from litex_boards.targets import machdyne_sergei_ml2
+        Board.__init__(self, machdyne_sergei_ml2.BaseSoC, soc_capabilities={
+            # Communication
+            "serial",
+            "usb_host",
+            "ethernet",
+            # Storage
+            #"spiflash",
+            #"sdcard",
+            "spisdcard",
+            "framebuffer",
+        })
+
+# Sergei MX2 support -----------------------------------------------------------------------------------
+
+class Sergei_MX2(Board):
+    soc_kwargs = {"l2_size" : 8192}
+    def __init__(self):
+        from litex_boards.targets import machdyne_sergei_mx2
+        Board.__init__(self, machdyne_sergei_mx2.BaseSoC, soc_capabilities={
+            # Communication
+            "serial",
+            "usb_host",
+            "ethernet",
+            # Storage
+            #"spiflash",
+            "sdcard",
+            #"spisdcard",
+            "framebuffer",
+            # 7-Series specific
+            "xadc",
+            "mmcm",
+            "icap_bitstream",
+        })
+
+# Klinge support -----------------------------------------------------------------------------------
+
+class Klinge(Board):
+    #soc_kwargs = {"l2_size" : 2048}
+    soc_kwargs = {"l2_size" : 0}
+    def __init__(self):
+        from litex_boards.targets import machdyne_klinge
+        Board.__init__(self, machdyne_klinge.BaseSoC, soc_capabilities={
+            # Communication
+            #"serial",
+            #"usb_host",
+            #"usb_acm",
+            "ethernet",
+            # Storage
+            #"spiflash",
+            "spisdcard_dual",
+            #"sdcard",
+            # Video,
+            #"framebuffer",
+        })
+
 #---------------------------------------------------------------------------------------------------
 # Intel Boards
 #---------------------------------------------------------------------------------------------------
